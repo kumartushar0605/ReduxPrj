@@ -11,17 +11,17 @@ export const cartReducer = createReducer({
 {
     addToCart:(state,action)=>{
      const item = action.payload;
-     console.log(item);
+     console.log(`your item ${item.name}`);
      // go niche code h usse add to cart kre pe qty badhe ga na ki dubara cart m aagye ga
 
      const isItemExist = state.cartItems.find((i)=>i.id===item.id)
 
      if(isItemExist){
         state.cartItems.forEach(i=>{
-            console.log(i)
+            console.log(`tour i ${i}`)
                if(i.id===item.id) i.quantity += 1;
 
-        })
+        });
 
      }else{
         state.cartItems.push(item)
@@ -59,7 +59,7 @@ export const cartReducer = createReducer({
          sum += i.price * i.quantity
       })
      state.subTotal= sum;
-     state.shipping= state.subTotal > 1000 ? 0:200
+     state.shipping= state.subTotal > 1000 ? 0 :200
 
      state.tax =(state.subTotal*0.18).toFixed();// substotal ka 18% tax and to fixed is used to remove the decimals
 state.total=state.subTotal + state.tax +state.shipping

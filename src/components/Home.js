@@ -33,13 +33,14 @@ const img2 =
 
 
     const addToCartHandler= (options) => {
-       console.log(options)
+       console.log(`options ${options}`)
        toast.success("Added To Cart")
        dispatch({
         type:"addToCart",
         payload:options
-       })
-
+       });
+       
+       dispatch({ type: "calculatePrice" });
 }
 
 
